@@ -1,6 +1,6 @@
 {
   "name": "algo-vista",
-  "description": "An interactive algorithm visualization platform featuring pathfinding, Conway's Game of Life, and sorting algorithms",
+  "description": "An interactive algorithm visualization app featuring pathfinding, Conway's Game of Life, and sorting algorithms",
   "version": "0.1.0",
   "private": true,
   "type": "module",
