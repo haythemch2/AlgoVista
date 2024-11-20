@@ -1,51 +1,36 @@
-import React from 'react'
+import { ChangeEvent } from 'react'
 
-interface SelectInputProps {
-  options: Array<{
-    value: string
-    label: string
-  }>
-  value?: string
-  onChange: (value: string) => void
-  placeholder?: string
-  disabled?: boolean
-  className?: string
-  name?: string
-}
-
-const SelectInput = ({
-  options,
+export function Select({
   value,
   onChange,
-  placeholder = 'Select an option',
-  disabled = false,
-  className = '',
-  name
-}: SelectInputProps) => {
+  options,
+  label,
+  isDisabled
+}: {
+  value: string | number
+  label: string
+  onChange: (value: ChangeEvent<HTMLSelectElement>) => void
+  options: { value: string | number; name: string }[]
+  isDisabled?: boolean
+}) {
   return (
-    <select
-      name={name}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      disabled={disabled}
-      className={`
-        block  rounded-md border 
-        border-gray-300 px-3 py-2 shadow-sm 
-         focus:outline-none 
-        ${disabled ? 'cursor-not-allowed bg-gray-100' : 'bg-white'}
-        ${className}
-      `}
-    >
-      <option value="" disabled hidden>
-        {placeholder}
-      </option>
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
+    <div className="flex flex-col items-start gap-1">
+      <label className="ml-1 text-xs text-gray-300" htmlFor={label}>
+        {label}
+      </label>
+      <select
+        disabled={isDisabled}
+        className="min-w-[200px] cursor-pointer rounded-md bg-gray-700 p-2 transition ease-in hover:bg-gray-800 active:border-0 active:ring-0 disabled:pointer-events-none sm:min-w-full"
+        id={label}
+        value={value}
+        onChange={onChange}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+    </div>
   )
 }
-
-export default SelectInput
