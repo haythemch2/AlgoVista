@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StartIcon = () => (
+export const StartIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -17,7 +17,7 @@ const StartIcon = () => (
   </svg>
 )
 
-const RestartIcon = () => (
+export const RestartIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

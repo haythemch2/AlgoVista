@@ -3,6 +3,7 @@ import PathFinder from './components/PathFinder'
 import ConwaysGOL from './components/ConwaysGOL'
 import SortingAlg from './components/SortingAlg'
 import { PathFinderProvider } from 'context/PathFinderContext'
+import { SortingAlgorithmProvider } from 'context/Sorting'
 
 enum ETabType {
   PathFinder = 1,
@@ -36,11 +37,19 @@ function App() {
   const renderTabContent = () => {
     switch (activeTab) {
       case ETabType.PathFinder:
-        return <PathFinder />
+        return (
+          <PathFinderProvider>
+            <PathFinder />
+          </PathFinderProvider>
+        )
       case ETabType.ConwaysGOL:
         return <ConwaysGOL />
       case ETabType.SortingAlg:
-        return <SortingAlg />
+        return (
+          <SortingAlgorithmProvider>
+            <SortingAlg />
+          </SortingAlgorithmProvider>
+        )
       default:
         return null
     }
@@ -71,9 +80,7 @@ function App() {
           ))}
         </nav>
       </div>
-      <div className="mt-4 size-full">
-        <PathFinderProvider>{renderTabContent()}</PathFinderProvider>
-      </div>
+      <div className="mt-4 size-full">{renderTabContent()}</div>
     </div>
   )
 }

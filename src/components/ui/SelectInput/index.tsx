@@ -20,7 +20,7 @@ export function Select({
       </label>
       <select
         disabled={isDisabled}
-        className="min-w-[200px] cursor-pointer rounded-md bg-gray-700 p-2 transition ease-in hover:bg-gray-800 active:border-0 active:ring-0 disabled:pointer-events-none sm:min-w-full"
+        className="min-w-[200px] cursor-pointer rounded-md bg-gray-700 p-2 transition ease-in hover:bg-gray-800 active:border-0 active:ring-0 disabled:pointer-events-none"
         id={label}
         value={value}
         onChange={onChange}
