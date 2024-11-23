@@ -13,7 +13,6 @@ AlgoVista is an interactive algorithm visualization platform designed to help us
 - Maze generation algorithms
 - Interactive grid with wall placement
 - Speed control for visualization
-- Step-by-step execution option
 
 ### 2. Conway's Game of Life
 - Interactive cell toggling

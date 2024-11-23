@@ -35,54 +35,33 @@ const RestartIcon = () => (
 )
 
 interface ButtonProps {
-  onStart: () => void
-  onRestart?: () => void
-  isInProgress: boolean
-  isProgressCompleted: boolean
-  className?: string
+  handlerRunVisualizer: () => void
+  isDisabled: boolean
+  isGraphVisualized: boolean
 }
 
 const StartButton = ({
-  onStart,
-  onRestart,
-  isInProgress,
-  isProgressCompleted,
-  className = ''
+  handlerRunVisualizer,
+  isDisabled,
+  isGraphVisualized
 }: ButtonProps) => {
-  const handleClick = isProgressCompleted
-    ? onRestart
-    : isInProgress
-      ? undefined
-      : onStart
-
-  const buttonClasses = () => {
-    if (isProgressCompleted)
-      return 'bg-blue-500 hover:bg-blue-600 cursor-pointer'
-    if (!isInProgress) return 'bg-green-500 hover:bg-green-600 cursor-pointer'
-    return 'bg-gray-400 cursor-not-allowed'
-  }
-
   return (
     <button
-      onClick={handleClick}
-      disabled={!isProgressCompleted && !isInProgress}
+      onClick={handlerRunVisualizer}
+      disabled={isDisabled}
+      // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
       className={`
-          flex items-center justify-center 
-          rounded-md px-4 
-          py-2 
-          text-white 
-          transition-all duration-300
-          ${buttonClasses()}
-          ${className}
+        flex
+          h-9 w-48 items-center justify-center 
+          rounded-md border-none 
+          bg-green-500 
+          p-2.5 
+         px-4 py-2 text-white shadow-md  transition ease-in hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-300 focus:ring-opacity-30 active:ring-green-300 disabled:pointer-events-none disabled:opacity-50
         `}
     >
-      {isProgressCompleted ? <RestartIcon /> : <StartIcon />}
+      {isGraphVisualized ? <RestartIcon /> : <StartIcon />}
       <span className="ml-2">
-        {isProgressCompleted
-          ? 'Restart'
-          : isInProgress
-            ? 'In Progress'
-            : 'Start'}
+        {isGraphVisualized ? 'Restart' : isDisabled ? 'In Progress' : 'Start'}
       </span>
     </button>
   )
