@@ -8,7 +8,8 @@ import {
   CONWAYS_SPEEDS,
   createEmptyGrid
 } from 'utils/conways'
-import { Conways_Button, PlayPauseButton } from './Buttons'
+import { Conways_Button } from './Conways_Button'
+import { PlayPauseButton } from 'components/ui/StartButtons'
 
 const ConwaysGOL = () => {
   const [grid, setGrid] = useState<number[][]>(createEmptyGrid())
@@ -118,7 +119,6 @@ const ConwaysGOL = () => {
 
   return (
     <div>
-      <div className="absolute inset-0 -z-10 size-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#a333ee_100%)]"></div>
       <div className="flex w-full flex-col items-center justify-center gap-8  md:flex-row md:items-end">
         <Select
           label="Speed"

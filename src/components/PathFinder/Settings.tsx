@@ -1,5 +1,5 @@
 import { Select } from 'components/ui/SelectInput'
-import StartButton from 'components/ui/StartButton'
+import { StartButton } from 'components/ui/StartButtons'
 import { usePathFinder } from 'hooks'
 import React, { MutableRefObject, useState } from 'react'
 import { animatePath } from 'utils/animatePath'

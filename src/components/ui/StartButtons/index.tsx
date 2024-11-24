@@ -1,4 +1,5 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export const StartIcon = () => (
   <svg
@@ -34,13 +35,29 @@ export const RestartIcon = () => (
   </svg>
 )
 
+export const PauseIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-5"
+    >
+      <rect x="6" y="4" width="4" height="16" />
+      <rect x="14" y="4" width="4" height="16" />
+    </svg>
+  )
+}
+
 interface ButtonProps {
   handlerRunVisualizer: () => void
   isDisabled: boolean
   isGraphVisualized: boolean
 }
 
-const StartButton = ({
+export const StartButton = ({
   handlerRunVisualizer,
   isDisabled,
   isGraphVisualized
@@ -67,4 +84,28 @@ const StartButton = ({
   )
 }
 
-export default StartButton
+export const PlayPauseButton = ({
+  onClick,
+  isPlaying,
+  mainColor = '#ad7bee',
+  hoverColor = '#9c5def'
+}: {
+  onClick: () => void
+  isPlaying: boolean
+  mainColor?: string
+  hoverColor?: string
+}) => {
+  return (
+    <button
+      className={twMerge(
+        'transition ease-in flex items-center justify-center h-9 w-48 sm:w-28 rounded-lg shadow-md',
+        isPlaying
+          ? 'bg-gray-700 hover:bg-gray-800'
+          : `bg-[${mainColor}] hover:bg-[${hoverColor}]`
+      )}
+      onClick={onClick}
+    >
+      {isPlaying ? <PauseIcon /> : <StartIcon />}
+    </button>
+  )
+}

@@ -24,7 +24,7 @@
   }
   
   .default-line-color {
-    background: theme("colors.system.purple50");
+    background: rgb(160, 160, 160);
   }
   
   .change-line-color {
